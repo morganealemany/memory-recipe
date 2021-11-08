@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{# {% block title %}Log in!{% endblock %} #}
+
+{% block content %}
+<main class="login">
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Une petite explication?
+            </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                Je vous propose aujourd'hui de partager avec la famille toutes les recettes qui embellisent nos souvenirs. 
+        Des "boules de neige" d'Annick aux "oeufs à la sauce tomate" d'Andrée en passant par les "carabistrouilles" de Bruno ou encore le "gateau aux pommes" de Marie-France, je me remémore avec nostalgie toutes ces recettes qui font partie intégrante de ce que nous sommes.
+        Pourquoi ne pas se partager ces recettes qui nous sont si chères? Afin qu'elles ne tombent pas dans l'oubli et même pour en découvrir de nouvelles... 
+        Les cahiers de recettes se transmettaient auparavant de mains en mains. Aujourd'hui nous sommes pour beaucoup loin de nos mains mais proches de nos coeurs et de nos papilles ;). 
+        Alors à vos fouets et vos claviers! Faites nous remonter le temps ou tout simplement rêver et saliver!
+            </div>
+            </div>
+        </div>
+    </div>
+    <form method="post">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        {% if app.user %}
+            <div class="mb-3">
+                Vous êtes connecté en tant que {{ app.user.firstname }}, <a href="{{ path('app_logout') }}">Se déconnecter</a>
+            </div>
+        {% endif %}
+
+        <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
+        <label for="inputEmail">Email</label>
+        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+        <label for="inputPassword">Mot de passe</label>
+        <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+        <input type="hidden" name="_csrf_token"
+            value="{{ csrf_token('authenticate') }}"
+        >
+
+        {#
+            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+            See https://symfony.com/doc/current/security/remember_me.html
+
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" name="_remember_me"> Remember me
+                </label>
+            </div>
+        #}
+
+        <button class="btn btn-lg btn-connexion" type="submit">
+            Se connecter
+        </button>
+    </form>
+</main>
+{% endblock %}

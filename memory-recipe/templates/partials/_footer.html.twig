@@ -1,7 +1,10 @@
 <footer>
     <p>Recettes de nos souvenirs</p>
     <div class="footer-links">
+        {% set currentPath = path(app.request.attributes.get('_route')) %}
+        {% if currentPath != "/connexion" %}
         <a href="">Ajouter ma recette</a>
+        {% endif %}
         <a href="">Contacts</a>
     </div>
 </footer>
