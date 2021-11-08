@@ -15,6 +15,7 @@ class HomeController extends AbstractController
     {
         // TODO les 5 dernières recettes + les 5 meilleures recettes + recette au hasard
         // TODO création BDD
+        // !!ATTENTION changer de branche 
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
         ]);
