@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{# {% block title %}Hello CategoryController!{% endblock %} #}
+
+{% block content %}
+<main class="category-show">
+{% for recipe in category.recipes %}
+    <div class="recipe-card">
+        <a href="">
+        {% if category.id == 9 %}
+        <img src="{{ asset('assets/images/aperitif.jpg')}}" alt="">
+        {% elseif category.id == 10 %}
+        <img src="{{ asset('assets/images/entree.jpg')}}" alt="">
+        {% elseif category.id == 11 %}
+        <img src="{{ asset('assets/images/dessert.jpg')}}" alt="">
+        {% elseif category.id == 12 %}
+        <img src="{{ asset('assets/images/plat.jpg')}}" alt="">
+        {% endif %}
+        </a>
+        <div class="recipe-resume">
+            <a href=""><h1>{{recipe.name}}</h1></a>
+            <p>{{recipe.steps}}</p>
+        </div>
+    </div>    
+{% endfor %}
+</main>
+{% endblock %}

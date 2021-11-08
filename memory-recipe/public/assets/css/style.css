@@ -92,4 +92,24 @@ footer {
     margin-top: 3em;
 }
 
+/* Category show */
+.recipe-card {
+    margin: auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    width : 300px;
+    border: 1px solid grey;
+}
+.recipe-card a, .recipe-card img {
+    width: 298px;
+}
+.recipe-resume {
+    margin: 1em;
+}
+
+.category-show {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 
