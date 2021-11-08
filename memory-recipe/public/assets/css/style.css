@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Marck+Script&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css");
+header nav div .navbar-brand {
+    font-family: 'Marck Script', cursive;
+    font-size: 1.3em;
+}
+.divider {
+    background-color: grey;
+    width: 90%;
+    height: 2px;
+    margin: auto;
+}
+.author-speech {
+    background-color: lightblue;
+    border-radius: 2%;
+    margin: 1em;
+    padding: 1em;
+}
+.author-speech p {
+    margin-bottom: 0;
+    font-family: 'Marck Script', cursive;
+    font-size: 1.3em;
+    text-align: center;
+}
+.recipe-wheel {
+    /* background-color: blue; */
+    margin: 1em 1em;
+    padding: 1em;
+    text-align: center;
+}
+.recipe-wheel div, .recipe-newest div, .recipe-best div {
+    display: flex;
+    justify-content: center;
+}
+.recipe-wheel div i, .recipe-newest div i, .recipe-best div i{
+    margin-right: 0.5em;
+}
+.recipe-newest {
+    background-color: lightsalmon;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 2%;
+}
+i {
+    font-size: 1.3em;
+}
+ul {
+    font-size: 1em;
+}
+.recipe-best {
+    background-color: lightgreen;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 2%;
+}
+footer {
+    text-align: center;
+    margin: 1em 0;
+}
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media screen and (min-width: 990px ) 
+{
+    main {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .divider {
+        margin-top: 0.5em;
+        margin-bottom: 0.5em; 
+    }
+}
+
+

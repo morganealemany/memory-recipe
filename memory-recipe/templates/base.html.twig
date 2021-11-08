@@ -1,0 +1,57 @@
+{% include "/partials/_header.html.twig" %}
+
+{% block content %}
+<main>
+    <section>
+        <div class="author-speech"> 
+            <p>
+                Mamie, c'est dans tes vieux pots qu'on a fait nos meilleures recettes et vécus nos meilleurs moments!
+            </p>
+        </div>
+    </section>
+    <div class="divider"></div>
+    <section>
+        <div class="recipe-wheel"> 
+            <div>
+                <i class="bi bi-patch-question-fill"></i>
+                <h3>Recette roulette</h3>
+            </div>  
+            <a href="">Boules de neige</a>
+        </div>
+    </section>
+    <div class="divider"></div>
+    <section>
+        <div class="recipe-newest">
+            <div>
+                <i class="bi bi-cloud-plus-fill"></i>
+                <h3>Nouvelles recettes</h3>
+            </div>
+            <ul>
+                <li>Pates</li>
+                <li>Saumon</li>
+                <li>Chocolat</li>
+                <li>Frites</li>
+                <li>Galette des rois</li>
+            </ul>
+        </div>
+    </section>
+    <section>
+        <div class="recipe-best">
+            <div>
+                <i class="bi bi-stars"></i>
+                <h3>Meilleures recettes</h3>
+            </div>
+            <ul>
+                <li>Pates</li>
+                <li>Saumon</li>
+                <li>Chocolat</li>
+                <li>Frites</li>
+                <li>Galette des rois</li>
+            </ul>
+        </div>
+    </section>
+</main>
+{% endblock %}
+<div class="divider"></div>
+
+{% include "/partials/_footer.html.twig" %}
