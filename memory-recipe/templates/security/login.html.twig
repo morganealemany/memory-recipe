@@ -4,24 +4,6 @@
 
 {% block content %}
 <main class="login">
-    <div class="accordion" id="accordionExample">
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Une petite explication?
-            </button>
-            </h2>
-            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-                Je vous propose aujourd'hui de partager avec la famille toutes les recettes qui embellisent nos souvenirs. 
-        Des "boules de neige" d'Annick aux "oeufs à la sauce tomate" d'Andrée en passant par les "carabistrouilles" de Bruno ou encore le "gateau aux pommes" de Marie-France, je me remémore avec nostalgie toutes ces recettes qui font partie intégrante de ce que nous sommes.
-        Pourquoi ne pas se partager ces recettes qui nous sont si chères? Afin qu'elles ne tombent pas dans l'oubli et même pour en découvrir de nouvelles... 
-        Les cahiers de recettes se transmettaient auparavant de mains en mains. Aujourd'hui nous sommes pour beaucoup loin de nos mains mais proches de nos coeurs et de nos papilles ;). 
-        Alors à vos fouets et vos claviers! Faites nous remonter le temps ou tout simplement rêver et saliver!
-            </div>
-            </div>
-        </div>
-    </div>
     <form method="post">
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>

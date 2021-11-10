@@ -66,7 +66,7 @@ footer {
     align-items: center;
 }
 
-@media screen and (min-width: 990px ) 
+@media screen and (min-width: 990px) 
 {
     .home {
         display: flex;
@@ -86,10 +86,23 @@ footer {
 }
 .login {
     text-align: center;
-    margin: 2em;
+    margin-top: 10em;
+    margin-bottom: 13em;
 }
-.login form {
-    margin-top: 3em;
+.login form input {
+    width: 90%;
+    margin: auto;
+}
+
+@media screen and (min-width: 768px) 
+{
+    .login {
+        margin-bottom: 18em;
+    }
+    .login form input {
+        width: 40%;
+        margin: auto;
+    }
 }
 
 /* Category show */
@@ -112,4 +125,97 @@ footer {
     flex-wrap: wrap;
 }
 
+/* Recipe show */
+.recipe-show {
+    padding: 1em;
+}
+.recipe-show h1, .recipe-show h3 {
+    text-align: center;
+    margin-top: 1em;
+}
+.recipe-ingredients, .recipe-informations {
+    width: 90%;
+    margin: auto;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border: 2px solid lightgray;
+    border-radius: 2%;
+}
+.recipe-ingredients ul {
+    list-style-type: none;
+}
+.ingredients-logo, .steps-logo, .informations-logo {
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.recipe-steps p, .recipe-informations p {
+    margin: 1em 1.5em 1.5em 1.5em;
+}
+.recipe-picture {
+    text-align: center;
+}
+.recipe-picture img {
+    width: 260px;
+    border-radius: 2%;
+}
+.recipe-comments {
+    width: 90%;
+    margin: auto;
+    margin-top: 1em;
+}
+.recipe-single-comment {
+    margin-top: 2em;
+    border-radius: 2%;
+}
+.recipe-single-comment-author {
+    font-style: italic;
+    color: lightslategray;
+    margin-bottom: 0;
+}
+.recipe-single-comment-text {
+    padding: 0em 1em;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    margin-left: 1em;
+}
+#comment-form .form-content textarea {
+    width: 100%;
+}
+#comment-form .form-content input {
+    background-color: lightseagreen;
+    border: 2px solid lightslategray;
+    border-radius: 5px;
+}
+#comment-form label {
+    font-style: italic;
+}
+
+@media screen and (min-width: 990px) 
+{
+    .recipe-presentation {
+        display: flex;
+        justify-content: center;
+    }
+    .recipe-picture img {
+        width: 500px;
+    }
+    .recipe-title {
+        display: flex;
+        flex-direction: column;
+        margin-left: 5em;
+        margin-top: 4em;
+    }
+    .recipe {
+        display: flex;
+        width: 90%;
+        margin: auto;
+    }
+    .recipe-ingredients {
+        width: 30%;
+    }
+    .recipe-steps {
+        width: 70%;
+    }
+}
 
