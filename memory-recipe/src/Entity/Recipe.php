@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\RecipeRepository;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -50,12 +51,6 @@ class Recipe
     private $updatedAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="recipes")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $user;
-
-    /**
      * @ORM\OneToMany(targetEntity=Ingredient::class, mappedBy="recipe", orphanRemoval=true)
      */
     private $ingredient;
@@ -71,10 +66,17 @@ class Recipe
      */
     private $comment;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="recipes")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
     public function __construct()
     {
         $this->ingredient = new ArrayCollection();
         $this->comment = new ArrayCollection();
+        $this->createdAt = new DateTimeImmutable();
     }
 
     public function getId(): ?int
@@ -234,6 +236,18 @@ class Recipe
                 $comment->setRecipe(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUserid(): ?User
+    {
+        return $this->userid;
+    }
+
+    public function setUserid(?User $userid): self
+    {
+        $this->userid = $userid;
 
         return $this;
     }

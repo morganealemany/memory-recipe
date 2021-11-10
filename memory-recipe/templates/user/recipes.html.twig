@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+<main class="profile-recipes">
+<h1>Mes recettes</h1>
+    <table>
+    <thead>
+        <tr>
+            <th class="col1">Date</th>
+            <th class="col2">Catégorie</th>
+            <th class="col3">Nom</th>
+            {# <th>Photo</th> #}
+            <th class="col4">Informations</th>
+            <th class="col5">Ingredients</th>
+            <th class="col6">Recette</th>
+            <th class="col7">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for recipe in user.recipes %}
+        <tr>
+            <td class="col1">{{recipe.createdAt|date("d-M-Y")}}</td>
+            <td class="col2">{{recipe.category.name}}</td>
+            <td class="col3">{{recipe.name}}</td>
+            {# <td>{{recipe.picture}}</td> #}
+            <td class="col4">{{recipe.informations}}</td>
+            <td class="col5"> {% for ingredient in recipe.ingredient %}
+            {{ingredient.quantity}} {{ingredient.measureUnit}} {{ingredient.name}}
+
+            {% endfor %}
+            </td>
+            <td class="col6">{{recipe.steps}}</td>
+            <td class="col7"> 
+            <a href="{{path('recipe', {id: recipe.id})}}">Voir</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+</main>
+{# {{dump(recipe)}} #}
+{% endblock %}

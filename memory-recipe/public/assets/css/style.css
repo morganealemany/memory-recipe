@@ -219,3 +219,91 @@ footer {
     }
 }
 
+/* Profile informations */
+.profile-infos {
+    width: 90%;
+    margin: auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    text-align: center;
+}
+.profile-infos form div label {
+    color: lightslategray;
+}
+.profile-infos form button {
+    background-color: lightseagreen;
+    border: 2px solid lightslategray;
+    border-radius: 5px;
+}
+
+/* Profile recipes */
+.profile-recipes {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    text-align: center;
+}
+.profile-recipes table {
+    border: 1px solid grey;
+}
+.profile-recipes table td {
+    border: 1px solid grey;
+}
+
+@media screen and (max-width: 990px)
+{
+   .col4, .col5, .col6 {
+       display: none;
+   } 
+}
+
+/* Profile comments */
+.profile-comments {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    text-align: center;
+}
+.profile-comments table {
+    border: 1px solid grey;
+}
+.profile-comments table td {
+    border: 1px solid grey;
+}
+
+/* Recipe create */
+.recipe-create {
+    width: 90%;
+    margin: auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    text-align: center;
+}
+.recipe-create form div label {
+    color: lightslategray;
+}
+.recipe-create form button {
+    background-color: lightseagreen;
+    border: 2px solid lightslategray;
+    border-radius: 5px;
+    margin-bottom: 1em;
+}
+
+/* Search */
+.search-results {
+    width: 90%;
+    margin: auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    text-align: center;
+}
+
+.search-results ul {
+    list-style-type: none;
+}

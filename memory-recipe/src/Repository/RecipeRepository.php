@@ -20,15 +20,20 @@ class RecipeRepository extends ServiceEntityRepository
     }
   
 
-    /*
-    public function findOneBySomeField($value): ?Recipe
+    /**
+     * Find the recipes linked to the search query
+     *
+     * @param [type] $query
+     * @return void
+     */
+    public function findRecipesByName($query)
     {
-        return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
-            ->setParameter('val', $value)
+        return $this->createQueryBuilder('recipe')
+            ->where('recipe.name LIKE :query')
+            ->setParameter(':query', "%$query%")
             ->getQuery()
-            ->getOneOrNullResult()
+            ->getResult()
         ;
     }
-    */
+    
 }

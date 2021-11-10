@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\CommentRepository;
 use App\Repository\RecipeRepository;
 use App\Service\RecipeService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,7 +14,7 @@ class HomeController extends AbstractController
     /**
      * @Route("/accueil", name="home")
      */
-    public function index(RecipeRepository $recipeRepository, RecipeService $recipeService): Response
+    public function index(CommentRepository $commentRepository, RecipeRepository $recipeRepository, RecipeService $recipeService): Response
     {
         $recipes = $recipeRepository->findAll();
 
@@ -24,12 +25,14 @@ class HomeController extends AbstractController
 
         // NOUVELLES RECETTES
         $lastRecipes =$recipeRepository->findBy(array(),array('id'=>'DESC'),5,0);
-        dump($lastRecipes);
-        
-        // TODO les 5 meilleures recettes
+
+        // DERNIERS COMMENTAIRES
+        $lastComments = $commentRepository->findBy(array(), array('id'=>'DESC'),5,0);
+
         return $this->render('home/index.html.twig', [
             'randomRecipe' => $randomRecipe,
             'lastRecipes' => $lastRecipes,
+            'lastComments' => $lastComments,
         ]);
     }
 }

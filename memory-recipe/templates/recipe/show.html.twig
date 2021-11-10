@@ -6,7 +6,15 @@
 <main class="recipe-show">
     <section class="recipe-presentation">
         <div class="recipe-picture">
-            <img src="{{ asset('assets/images/dessert.jpg')}}" alt="">
+        {% if recipe.category.id == 9 %}
+        <img src="{{ asset('assets/images/aperitif.jpg')}}" alt="">
+        {% elseif recipe.category.id == 10 %}
+        <img src="{{ asset('assets/images/entree.jpg')}}" alt="">
+        {% elseif recipe.category.id == 11 %}
+        <img src="{{ asset('assets/images/dessert.jpg')}}" alt="">
+        {% elseif recipe.category.id == 12 %}
+        <img src="{{ asset('assets/images/plat.jpg')}}" alt="">
+        {% endif %}
         </div>
         <div class="recipe-title">
             <h1>{{recipe.name}}</h1>
@@ -26,42 +34,19 @@
                 <img src="https://img.icons8.com/ios-filled/50/000000/ingredients-for-cooking.png"/>
             </div>
             <ul>
+            {% for ingredient in recipe.ingredient %}
                 <li>
                     <input type="checkbox">
-                    <label> 3 Tomates</label>
+                    <label> {{ingredient.name}} : {{ingredient.quantity}} {{ingredient.measureUnit}}</label>
                 </li>
-                <li>
-                    <input type="checkbox">
-                    <label> 10 cuilleres Fromage</label>
-                </li>
-                <li>
-                    <input type="checkbox">
-                    <label>2 tranches Pain</label>
-                </li>
-
-                <li>
-                    <input type="checkbox">
-                    <label>Tomates</label>
-                </li>
-                <li>
-                    <input type="checkbox">
-                    <label>Tomates</label>
-                </li>
-                <li>
-                    <input type="checkbox">
-                    <label>Tomates</label>
-                </li>
-                <li>
-                    <input type="checkbox">
-                    <label>Tomates</label>
-                </li>
+            {% endfor %}
             </ul>
         </div>
         <div class="recipe-steps">
             <div class="steps-logo">
                 <img src="https://img.icons8.com/ios-filled/50/000000/kitchen.png"/>
             </div>
-            <p>Vestibulum pretium scelerisque tortor. Curabitur id lectus nulla. Donec turpis sapien, efficitur at sem at, volutpat porttitor lorem. Cras gravida egestas felis, sed porttitor lacus gravida eget. Sed consectetur mi orci, in mollis ipsum malesuada ac. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam aliquet congue volutpat. Vestibulum mattis purus felis, placerat molestie urna rutrum non. Morbi dictum arcu id nulla laoreet auctor. Cras cursus augue sit amet faucibus volutpat. Vestibulum fermentum, purus vitae malesuada commodo, ligula nisi interdum est, ornare lacinia quam enim nec purus.</p>
+            <p>{{recipe.steps}}</p>
         </div>
     </section>
     <div class="divider"></div>

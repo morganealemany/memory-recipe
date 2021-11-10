@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -59,6 +61,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="datetime_immutable", nullable=true)
      */
     private $updatedAt;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Recipe::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $recipes;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $comments;
+
+    public function __construct()
+    {
+        $this->recipes = new ArrayCollection();
+        $this->comments = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -205,6 +223,66 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setUpdatedAt(?\DateTimeImmutable $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Recipe[]
+     */
+    public function getRecipes(): Collection
+    {
+        return $this->recipes;
+    }
+
+    public function addRecipe(Recipe $recipe): self
+    {
+        if (!$this->recipes->contains($recipe)) {
+            $this->recipes[] = $recipe;
+            $recipe->setUserid($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRecipe(Recipe $recipe): self
+    {
+        if ($this->recipes->removeElement($recipe)) {
+            // set the owning side to null (unless already changed)
+            if ($recipe->getUserid() === $this) {
+                $recipe->setUserid(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Comment[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comment $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setUserid($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comment $comment): self
+    {
+        if ($this->comments->removeElement($comment)) {
+            // set the owning side to null (unless already changed)
+            if ($comment->getUserid() === $this) {
+                $comment->setUserid(null);
+            }
+        }
 
         return $this;
     }

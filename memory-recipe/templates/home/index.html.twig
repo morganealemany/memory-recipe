@@ -29,7 +29,7 @@
             </div>
             <ul>
             {% for recipe in lastRecipes %}
-                <li><a href="">{{recipe.name}}</a></li>
+                <li>{{recipe.name}} par <em>{{recipe.user.firstname}}</em><a href="{{path('recipe', {id : recipe.id})}}"><img src="https://img.icons8.com/ios-filled/30/000000/arrow.png"/></a></li>
             {% endfor %}
             </ul>
         </div>
@@ -38,14 +38,13 @@
         <div class="recipe-best">
             <div>
                 <i class="bi bi-stars"></i>
-                <h3>Meilleures recettes</h3>
+                <h3>Derniers commentaires</h3>
             </div>
             <ul>
-                <li>Pates</li>
-                <li>Saumon</li>
-                <li>Chocolat</li>
-                <li>Frites</li>
-                <li>Galette des rois</li>
+            {% for comment in lastComments %}
+                <li>"{{comment.text}}" par <em>{{comment.user.firstname}}</em><a href="{{path('recipe', {id : comment.recipe.id})}}"><img src="https://img.icons8.com/ios-filled/30/000000/arrow.png"/></a></li>
+            {% endfor %}
+
             </ul>
         </div>
     </section>
