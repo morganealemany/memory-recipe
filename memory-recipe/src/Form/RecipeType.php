@@ -51,7 +51,7 @@ class RecipeType extends AbstractType
                 // in the associated entity, so you can use the PHP constraint classes
                 'constraints' => [
                     new File([
-                        'maxSize' => '1024k',
+                        'maxSize' => '4000k',
                         'mimeTypes' => [
                             'image/png',
                             'image/jpeg'
