@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<h1 class="text-center mt-5">Contacter l'administratrice du site</h1>
+<p class="text-center mb-5">Des questions, suggestions? N'hésitez pas à m'en faire part via ce formulaire.</p>
+<form class="contact_form mb-5" method="post" action="{{path('contact')}}">
+    <div class="mb-3">
+        <label for="name" class="form-label">Ton prénom</label>
+        <input type="text" class="form-control" id="name" name="name">
+    </div>
+    <div class="mb-3">
+        <label for="subject" class="form-label">Le sujet du message</label>
+        <input type="text" class="form-control" id="subject" name="subject">
+    </div>
+    <div class="mb-3">
+        <label for="message" class="form-label">Ton message</label>
+        <textarea rows="5" cols="33" class="form-control" id="message" name="message">
+        </textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Envoyer</button>
+</form>
+
+
+{% endblock %}

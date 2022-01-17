@@ -3,11 +3,13 @@
     <div>
         <p>Recettes de nos souvenirs</p>
         <div class="footer-links">
+            {% set currentPath = app.request.attributes.get('_route') %}
+            {# {{dump(currentPath)}} #}
             {# {% set currentPath = path(app.request.attributes.get('_route')) %}
             {% if currentPath != "/connexion" %} #}
-            <a href="{{path('recipe_create')}}">Ajouter ma recette</a>
+            <a href="{{path('recipe_create')}}"{{ (currentPath == 'recipe_create') ? 'hidden' : ''}}>Ajouter ma recette</a>
             {# {% endif %} #}
-            <a href="">Contacts</a>
+            <a href="{{path('contact')}}"{{ (currentPath == 'contact') ? 'hidden' : ''}}>Contacts</a>
         </div>
     </div>
 </footer>

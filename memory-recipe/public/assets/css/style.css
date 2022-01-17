@@ -384,3 +384,21 @@ footer {
 .search-results ul {
     list-style-type: none;
 }
+
+/* Contact */
+.contact_form {
+    width: 50%;
+    text-align: center;
+    margin: auto;
+}
+.contact_form button {
+    background-color: lightseagreen;
+    border-color: lightseagreen;
+}
+
+@media screen and (max-width: 990px)
+{
+   .contact_form {
+       width: 90%;
+   }
+}

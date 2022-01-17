@@ -6,6 +6,7 @@ use App\Repository\CommentRepository;
 use App\Repository\RecipeRepository;
 use App\Service\RecipeService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -34,5 +35,35 @@ class HomeController extends AbstractController
             'lastRecipes' => $lastRecipes,
             'lastComments' => $lastComments,
         ]);
+    }
+
+
+    /**
+     * Method to display contact form and submitted it
+     * 
+     * @Route("/contact", name="contact")
+     *
+     * @return void
+     */
+    public function contact(Request $request) {
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {   
+            $to = 'm.plancheron@gmail.com';
+            $subject = $request->request->get('subject');
+            $message = $request->request->get('message');
+            $from = 'petitemo_1011@hotmail.fr';
+            // dd($subject, $message, $sender->getEmail());
+            $retour = mail($to, $subject, $message);
+            dd($retour);
+            if ($retour) {
+                $this->addFlash('success', 'Votre message a bien été envoyé');
+            }
+            else {
+                $this->addFlash('warning', 'Votre message n\'a pas été envoyé, veuillez réessayer plus tard.');
+            }
+            // TODO essayer plutot avec symfony mailer peut-être car adresse smtp avec free en 4G???
+
+        }
+        return $this->render('contact.html.twig');
     }
 }
