@@ -3,33 +3,26 @@
 {% block content %}
 
 <main class="home">
-    {# <section>
-        <div class="author-speech"> 
-            <p>
-                Mamie, c'est dans tes vieux pots qu'on a fait nos meilleures recettes et vécus nos meilleurs moments!
-            </p>
-        </div>
-    </section> #}
     <div class="divider"></div>
     <section>
         <div class="recipe-wheel"> 
             <div>
-                {# <i class="bi bi-patch-question-fill"></i> #}
                 <h3>Recette roulette</h3>
             </div>  
             <div class="recipe-wheel-img">
             <a class="recipe-wheel-link" href="{{path('recipe_show', {'id': randomRecipe.id})}}">
-                {% if randomRecipe.picture is defined %}
-                    <img src="" alt="">
-                {% endif %}
-                {% if randomRecipe.category.id == 9 %}
-                <img src="{{ asset('assets/images/aperitif.jpg')}}" alt="">
-                {% elseif randomRecipe.category.id == 10 %}
-                <img src="{{ asset('assets/images/entree.jpg')}}" alt="">
-                {% elseif randomRecipe.category.id == 11 %}
-                <img src="{{ asset('assets/images/dessert.jpg')}}" alt="">
-                {% elseif randomRecipe.category.id == 12 %}
-                <img src="{{ asset('assets/images/plat.jpg')}}" alt="">
+                {% if randomRecipe.picture %}
+                <img src="{{ asset('uploads/' ~ randomRecipe.picture) }}" width="300" alt="{{ randomRecipe.name }}">
+                {% else %}   
+                    {% if randomRecipe.category.id == 9 %}
+                    <img src="{{ asset('assets/images/aperitif.jpg')}}" alt="">
+                    {% elseif randomRecipe.category.id == 10 %}
+                    <img src="{{ asset('assets/images/entree.jpg')}}" alt="">
+                    {% elseif randomRecipe.category.id == 11 %}
+                    <img src="{{ asset('assets/images/dessert.jpg')}}" alt="">
+                    {% elseif randomRecipe.category.id == 12 %}
+                    <img src="{{ asset('assets/images/plat.jpg')}}" alt="">
+                    {% endif %}
                 {% endif %}
                 <div class="recipe-wheel-informations">
                     <h3>{{randomRecipe.name}}</h3>
@@ -43,16 +36,15 @@
     <section>
         <div class="recipe-newest">
             <div>
-                {# <i class="bi bi-cloud-plus-fill"></i> #}
                 <h3>Dernières recettes</h3>
             </div>
             <div class="lastRecipe-list">
                 {% for recipe in lastRecipes %}
                 <div class="lastRecipe">
                 <a class="lastRecipe-link" href="{{path('recipe_show', {'id': recipe.id})}}">
-                    {% if recipe.picture is not null %}
-                        <img src="" alt="">
-                    {% endif %}
+                {% if recipe.picture %}
+                <img src="{{ asset('uploads/' ~ recipe.picture) }}" width="300" alt="{{ recipe.name }}">
+                {% else %}   
                     {% if recipe.category.id == 9 %}
                     <img src="{{ asset('assets/images/aperitif.jpg')}}" alt="">
                     {% elseif recipe.category.id == 10 %}
@@ -62,6 +54,7 @@
                     {% elseif recipe.category.id == 12 %}
                     <img src="{{ asset('assets/images/plat.jpg')}}" alt="">
                     {% endif %}
+                {% endif %}
                     <div class="lastRecipe-informations">
                         <h3>{{recipe.name}}</h3>
                         <p> par {{recipe.user.firstname}}</p>

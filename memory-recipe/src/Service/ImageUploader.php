@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use Intervention\Image\ImageManager;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
@@ -18,7 +19,7 @@ class ImageUploader
     {
         /** @var UploadedFile $imgFile */
         $imgFile = $form->get($fieldName)->getData();
-
+        
         if ($imgFile) {
             //On récupère le nom du fichier
             $originalFilename = pathinfo($imgFile->getClientOriginalName(), PATHINFO_FILENAME);
@@ -27,10 +28,17 @@ class ImageUploader
             // Pour éviter que 2 utilisateurs upload 2 fichiers avec des noms identiques et pour ne pas écraser le fichier d'une autre personne, on va renommr nos fichiers en rajoutant un suffixe composé de caractères aléatoires ou unique.
             //Loris-45789.jpg
             $newFilename = $safeFilename.'-'. uniqid(). '.' .$imgFile->guessExtension();
-
+            
             //On déplace le fichier physique dans le dossier public/uploads
             try {
-                $imgFile->move('uploads', $newFilename);
+                // On utilise intervention image pour redimensionner l'image
+                $manager = new ImageManager();
+        
+                $manager
+                    ->make($imgFile)
+                    ->fit(640, 426)
+                    ->save('uploads/' .$newFilename);
+        
                 // On retourne le nom du fichier
                 return $newFilename;
             } catch (FileException $e) {
