@@ -20,6 +20,7 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            {% if is_granted('ROLE_USER') %}
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
@@ -49,6 +50,7 @@
                             <li><a class="dropdown-item" href="{{path('app_logout')}}">Se déconnecter</a></li>
                         </ul>
                     </li>
+                    {% if is_granted('ROLE_ADMIN') %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarAdminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Admin
@@ -59,13 +61,14 @@
                             <li><a class="dropdown-item" href="#">Commentaires</a></li>
                         </ul>
                     </li>
+                    {% endif %}
                 </ul>
                 <form action="{{path('search_index')}}" method="get" class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search" name="search">
                     <button class="btn btn-outline-dark" type="submit">Rechercher</button>
                 </form>
             </div>
-            {# {% endif %} #}
+            {% endif %}
         </div>
     </nav>
 </header>
