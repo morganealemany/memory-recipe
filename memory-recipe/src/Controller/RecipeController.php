@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Comment;
 use App\Entity\Recipe;
 use App\Form\RecipeType;
+use App\Service\ImageUploader;
 use App\Repository\RecipeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -51,7 +52,7 @@ class RecipeController extends AbstractController
      *
      * @return void
      */
-    public function create(Request $request)
+    public function create(Request $request, ImageUploader $imageUploader)
     {
         $recipe = new Recipe();
 
@@ -61,6 +62,14 @@ class RecipeController extends AbstractController
         $recipe->setUser($this->getUser());
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            // Upload the file with ImageUploader
+            $newFilename = $imageUploader->upload($form, 'picture');
+
+            // Update the image porperty
+            if ($newFilename) {
+                $recipe->setPicture($newFilename);
+            }
             $em = $this->getDoctrine()->getManager();
             $em->persist($recipe);
             foreach ($form->getData()->getIngredient() as $ingredient) {

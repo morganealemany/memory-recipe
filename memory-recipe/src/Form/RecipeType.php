@@ -8,9 +8,11 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 
 class RecipeType extends AbstractType
 {
@@ -22,11 +24,42 @@ class RecipeType extends AbstractType
             ])
             ->add('steps', null, [
                 'label' => 'Etapes de la recette',
+                'help' => 'Pensez à numéroter les étapes.',
+                'attr' => [
+                    'placeholder' => 'Exemple : 1- Préchauffer le four à 180°; 2- ...'
+                ]
             ] )
             ->add('informations', null, [
-                'label' => 'Informations'
+                'label' => 'Informations',
+                'help' => 'Histoire ou souvenirs liés à cette recette.',
+                'attr' => [
+                    'placeholder' => 'Plat incontournable des repas de famille chez Mamie...'
+                ]
             ])
             // ->add('picture')
+            ->add('picture', FileType::class, [
+                'label' => 'Choisir une image',
+
+                // unmapped means that this field is not associated to any entity property
+                // 'mapped' => false,
+
+                // make it optional so you don't have to re-upload the PDF file
+                // every time you edit the Product details
+                'required' => false,
+
+                // unmapped fields can't define their validation using annotations
+                // in the associated entity, so you can use the PHP constraint classes
+                'constraints' => [
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/png',
+                            'image/jpeg'
+                        ],
+                        'mimeTypesMessage' => 'Merci de ne choisir que des fichiers .png et .jpeg',
+                    ])
+                ],
+            ])
             // ->add('createdAt')
             // ->add('updatedAt')
             ->add('category', EntityType::class, [

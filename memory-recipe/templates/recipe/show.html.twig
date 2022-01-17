@@ -6,14 +6,18 @@
 <main class="recipe-show">
     <section class="recipe-presentation">
         <div class="recipe-picture">
-        {% if recipe.category.id == 9 %}
-        <img src="{{ asset('assets/images/aperitif.jpg')}}" alt="">
-        {% elseif recipe.category.id == 10 %}
-        <img src="{{ asset('assets/images/entree.jpg')}}" alt="">
-        {% elseif recipe.category.id == 11 %}
-        <img src="{{ asset('assets/images/dessert.jpg')}}" alt="">
-        {% elseif recipe.category.id == 12 %}
-        <img src="{{ asset('assets/images/plat.jpg')}}" alt="">
+        {% if recipe.picture %}
+        <img src="{{ asset('uploads/' ~ recipe.picture) }}" width="300" alt="{{ recipe.name }}">
+        {% else %}   
+            {% if recipe.category.id == 9 %}
+            <img src="{{ asset('assets/images/aperitif.jpg')}}" alt="">
+            {% elseif recipe.category.id == 10 %}
+            <img src="{{ asset('assets/images/entree.jpg')}}" alt="">
+            {% elseif recipe.category.id == 11 %}
+            <img src="{{ asset('assets/images/dessert.jpg')}}" alt="">
+            {% elseif recipe.category.id == 12 %}
+            <img src="{{ asset('assets/images/plat.jpg')}}" alt="">
+            {% endif %}
         {% endif %}
         </div>
         <div class="recipe-title">
