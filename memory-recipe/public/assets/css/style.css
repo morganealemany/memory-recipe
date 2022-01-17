@@ -7,6 +7,7 @@ header nav div .navbar-brand {
 }
 .nav-link.active {
     color: lightsalmon !important;
+    font-weight: bold !important;
 }
 
  /* Home */
@@ -73,8 +74,9 @@ header nav div .navbar-brand {
 }
 .recipe-wheel-informations > h3 {
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 1.2rem;
     text-align: center;
+    font-family: 'Marck Script', cursive;
 }
 .recipe-wheel-informations > p {
     display: none;
@@ -192,6 +194,12 @@ footer {
 .category-show {
     display: flex;
     flex-wrap: wrap;
+}
+.recipe-resume .recipe-link {
+    color: lightsalmon;
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Marck Script', cursive;
 }
 
 /* Recipe show */

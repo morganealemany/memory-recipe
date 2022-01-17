@@ -7,7 +7,7 @@
     <section>
         <div class="recipe-wheel"> 
             <div>
-                <h3>Recette roulette</h3>
+                <h3 class="fst-italic">Recette roulette</h3>
             </div>  
             <div class="recipe-wheel-img">
             <a class="recipe-wheel-link" href="{{path('recipe_show', {'id': randomRecipe.id})}}">
@@ -36,7 +36,7 @@
     <section>
         <div class="recipe-newest">
             <div>
-                <h3>Dernières recettes</h3>
+                <h3 class="fst-italic">Dernières recettes</h3>
             </div>
             <div class="lastRecipe-list">
                 {% for recipe in lastRecipes %}

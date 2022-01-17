@@ -5,19 +5,23 @@
 <main class="category-show">
 {% for recipe in category.recipes %}
     <div class="recipe-card">
-        <a href="">
-        {% if category.id == 9 %}
-        <img src="{{ asset('assets/images/aperitif.jpg')}}" alt="">
-        {% elseif category.id == 10 %}
-        <img src="{{ asset('assets/images/entree.jpg')}}" alt="">
-        {% elseif category.id == 11 %}
-        <img src="{{ asset('assets/images/dessert.jpg')}}" alt="">
-        {% elseif category.id == 12 %}
-        <img src="{{ asset('assets/images/plat.jpg')}}" alt="">
+        <a href="{{path('recipe_show', {id: recipe.id})}}">
+        {% if recipe.picture %}
+        <img src="{{ asset('uploads/' ~ recipe.picture) }}" width="300" alt="{{ recipe.name }}">
+        {% else %}   
+            {% if recipe.category.id == 9 %}
+            <img src="{{ asset('assets/images/aperitif.jpg')}}" alt="">
+            {% elseif recipe.category.id == 10 %}
+            <img src="{{ asset('assets/images/entree.jpg')}}" alt="">
+            {% elseif recipe.category.id == 11 %}
+            <img src="{{ asset('assets/images/dessert.jpg')}}" alt="">
+            {% elseif recipe.category.id == 12 %}
+            <img src="{{ asset('assets/images/plat.jpg')}}" alt="">
+            {% endif %}
         {% endif %}
         </a>
         <div class="recipe-resume">
-            <a href="{{path('recipe_show', {id: recipe.id})}}"><h1>{{recipe.name}}</h1></a>
+            <a href="{{path('recipe_show', {id: recipe.id})}}" class="recipe-link"><h1>{{recipe.name}}</h1></a>
             <p>{{recipe.steps}}</p>
         </div>
     </div>    
