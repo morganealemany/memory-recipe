@@ -10,12 +10,14 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{path('home')}}">Recettes de nos souvenirs</a>
-            {# {{dump(app.request.attributes)}} #}
+            {# {{dump(app.request.attributes.get('id'))}} #}
 
-            {# {% set currentPath = path(app.request.attributes.get('_route')) %} #}
+            {% set currentPath = app.request.attributes.get('_route') %}
+            {% set currentPathId = app.request.attributes.get('id')%}
+            {{dump(currentPath, currentPathId)}}
             {# {% if currentPath != "/connexion" %} #}
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -24,22 +26,22 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{path('home')}}">Accueil</a>
+                        <a class="nav-link {{ (currentPath == 'home') ? 'active' : ''}}" aria-current="page" href="{{path('home')}}">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{path('category_show', {'id': 9 })}}">Apéritif</a>
+                        <a class="nav-link {{ (currentPath == 'category_show') and (currentPathId == 9) ? 'active' : ''}}" href="{{path('category_show', {'id': 9 })}}">Apéritif</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{path('category_show', {'id': 10 })}}">Entrée</a>
+                        <a class="nav-link {{ (currentPath == 'category_show') and (currentPathId == 10) ? 'active' : ''}}" href="{{path('category_show', {'id': 10 })}}">Entrée</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{path('category_show', {'id': 12 })}}">Plat</a>
+                        <a class="nav-link {{ (currentPath == 'category_show') and (currentPathId == 12) ? 'active' : ''}}" href="{{path('category_show', {'id': 12 })}}">Plat</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{path('category_show', {'id': 11 })}}">Dessert</a>
+                        <a class="nav-link {{ (currentPath == 'category_show') and (currentPathId == 11) ? 'active' : ''}}" href="{{path('category_show', {'id': 11 })}}">Dessert</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarProfileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle {{ (currentPath == 'profile_infos') or (currentPath == 'profile_recipes') or (currentPath == 'profile_comments') ? 'active' : ''}}" href="#" id="navbarProfileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Profil
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarProfileDropdown">
