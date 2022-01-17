@@ -13,9 +13,8 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{path('home')}}">Recettes de nos souvenirs</a>
-            {# {{dump(app.request.attributes.get('id'))}} #}
 
-            {# Retrtieve the route informations to make the active class dynamic on navbar#}
+            {# Retrieve the route informations to make the active class dynamic on navbar#}
             {% set currentPath = app.request.attributes.get('_route') %}
             {% set currentPathId = app.request.attributes.get('id')%}
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

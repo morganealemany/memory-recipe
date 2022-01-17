@@ -5,6 +5,9 @@ header nav div .navbar-brand {
     font-family: 'Marck Script', cursive;
     font-size: 1.3em;
 }
+.nav-link.active {
+    color: lightsalmon !important;
+}
 
  /* Home */
 .divider {
@@ -14,10 +17,11 @@ header nav div .navbar-brand {
     margin: auto;
 }
 .author-speech {
-    background-color: lightblue;
+    background-color: lightgray;
     border-radius: 2%;
     margin: 1em;
     padding: 1em;
+    box-shadow: 5px 5px 5px grey;
 }
 .author-speech p {
     margin-bottom: 0;
@@ -47,9 +51,15 @@ header nav div .navbar-brand {
 }
 .recipe-wheel-link > img {
     width: 100%;
+    box-shadow: 5px 5px 5px lightsalmon;
 }
 .recipe-wheel-img {
     position: relative;
+    transition: transform 0.3s;
+    transform: translate3d(0, -1px, 0);
+}
+.recipe-wheel-img:hover {
+    transform: translate3d(0, -10px, 0);
 }
 .recipe-wheel-informations {
     position: absolute;
@@ -78,6 +88,12 @@ header nav div .navbar-brand {
     display: flex;
     position: relative;
     margin: 10px;
+    box-shadow: 5px 5px 5px black;
+    transition: transform 0.3s;
+    transform: translate3d(0, -1px, 0);
+}
+.lastRecipe:hover {
+    transform: translate3d(0, -10px, 0);
 }
 
 .lastRecipe-link > img {
@@ -134,7 +150,7 @@ footer {
 
 /* Connexion */
 .btn-connexion {
-    background-color: lightblue;
+    background-color: lightsalmon;
     margin-top: 1em;
 }
 .login {
