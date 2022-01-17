@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{# {% block title %}Hello UserController!{% endblock %} #}
+
+{% block content %}
+<main class="profile-infos">
+    <h1>Mes informations</h1>
+    {{form_start(form)}}
+        {{form_row(form.email)}}
+        {{form_row(form.firstname)}}
+        {{form_row(form.lastname)}}
+        {{form_row(form.password)}}
+        <button type="submit" class="btn">Modifier</button>
+    {{form_end(form)}}
+</main>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+<main class="profile-comments">
+<h1>Mes commentaires</h1>
+    <table>
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Recette</th>
+            <th>Texte</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for comment in user.comments %}
+        <tr>
+            <td class="col1">{{comment.createdAt|date("d-M-Y")}}</td>
+            <td class="col2">{{comment.recipe.name}}</td>
+            <td class="col3">{{comment.text}}</td>
+            
+            <td> <a href="{{path('recipe', {id: comment.recipe.id})}}">Voir</a></td>
+        </tr>
+    {% endfor %} 
+    </tbody>
+    </table>
+</main>
+{# {{dump(recipe)}} #}
+{% endblock %}

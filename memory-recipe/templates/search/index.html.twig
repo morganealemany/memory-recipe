@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{# {% block title %}Hello SearchController!{% endblock %} #}
+
+{% block content %}
+<main class="search-results">
+    <h1>Résultats de la recherche "{{query}}"</h1>
+    <ul>
+        {% for recipe in results %}
+
+        <li><a href="{{path('recipe', {id: recipe.id})}}">{{recipe.name}}</a> par <em>{{recipe.user.firstname}}</em></li>
+        
+        {% endfor %}
+    </ul>
+</main>
+
+{% endblock %}
