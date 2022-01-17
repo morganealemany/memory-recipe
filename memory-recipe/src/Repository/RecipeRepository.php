@@ -23,10 +23,10 @@ class RecipeRepository extends ServiceEntityRepository
     /**
      * Find the recipes linked to the search query
      *
-     * @param [type] $query
+     * @param [string] $query
      * @return void
      */
-    public function findRecipesByName($query)
+    public function findRecipesByName($query): array
     {
         return $this->createQueryBuilder('recipe')
             ->where('recipe.name LIKE :query')

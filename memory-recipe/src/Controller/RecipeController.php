@@ -11,12 +11,15 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/recette", name="recipe_")
+ */
 class RecipeController extends AbstractController
 {
     /**
      * Method to display the details of a recipe
      * 
-     * @Route("/recette/{id}", name="recipe", requirements={"id": "\d+"})
+     * @Route("/{id}", name="show", requirements={"id": "\d+"})
      * 
      * @param int $id The recipe id
      */
@@ -44,7 +47,7 @@ class RecipeController extends AbstractController
     /**
      * Method to create a new recipe
      * 
-     * @Route("/recette/creer", name="recipe_create")
+     * @Route("/creer", name="create")
      *
      * @return void
      */

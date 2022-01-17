@@ -18,7 +18,7 @@
             <td class="col2">{{comment.recipe.name}}</td>
             <td class="col3">{{comment.text}}</td>
             
-            <td> <a href="{{path('recipe', {id: comment.recipe.id})}}">Voir</a></td>
+            <td> <a href="{{path('recipe_show', {id: comment.recipe.id})}}">Voir</a></td>
         </tr>
     {% endfor %} 
     </tbody>

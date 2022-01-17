@@ -24,7 +24,7 @@ class HomeController extends AbstractController
         // dump($randomRecipe);
 
         // NOUVELLES RECETTES
-        $lastRecipes =$recipeRepository->findBy(array(),array('id'=>'DESC'),5,0);
+        $lastRecipes =$recipeRepository->findBy(array(),array('id'=>'DESC'),3,0);
 
         // DERNIERS COMMENTAIRES
         $lastComments = $commentRepository->findBy(array(), array('id'=>'DESC'),5,0);

@@ -17,7 +17,26 @@
                 <i class="bi bi-patch-question-fill"></i>
                 <h3>Recette roulette</h3>
             </div>  
-            <a href="">{{randomRecipe.name}}</a>
+            <div class="recipe-wheel-img">
+            <a class="recipe-wheel-link" href="{{path('recipe_show', {'id': randomRecipe.id})}}">
+                {% if randomRecipe.picture is defined %}
+                    <img src="" alt="">
+                {% endif %}
+                {% if randomRecipe.category.id == 9 %}
+                <img src="{{ asset('assets/images/aperitif.jpg')}}" alt="">
+                {% elseif randomRecipe.category.id == 10 %}
+                <img src="{{ asset('assets/images/entree.jpg')}}" alt="">
+                {% elseif randomRecipe.category.id == 11 %}
+                <img src="{{ asset('assets/images/dessert.jpg')}}" alt="">
+                {% elseif randomRecipe.category.id == 12 %}
+                <img src="{{ asset('assets/images/plat.jpg')}}" alt="">
+                {% endif %}
+                <div class="recipe-wheel-informations">
+                    <h3>{{randomRecipe.name}}</h3>
+                    <p>{{randomRecipe.informations}}</p>
+                </div>
+                    </a>
+            </div>
         </div>
     </section>
     <div class="divider"></div>
@@ -27,14 +46,33 @@
                 <i class="bi bi-cloud-plus-fill"></i>
                 <h3>Dernières recettes</h3>
             </div>
-            <ul>
-            {% for recipe in lastRecipes %}
-                <li>{{recipe.name}} par <em>{{recipe.user.firstname}}</em><a href="{{path('recipe', {id : recipe.id})}}"><img src="https://img.icons8.com/ios-filled/30/000000/arrow.png"/></a></li>
-            {% endfor %}
-            </ul>
+            <div class="lastRecipe-list">
+                {% for recipe in lastRecipes %}
+                <div class="lastRecipe">
+                <a class="lastRecipe-link" href="{{path('recipe_show', {'id': recipe.id})}}">
+                    {% if recipe.picture is not null %}
+                        <img src="" alt="">
+                    {% endif %}
+                    {% if recipe.category.id == 9 %}
+                    <img src="{{ asset('assets/images/aperitif.jpg')}}" alt="">
+                    {% elseif recipe.category.id == 10 %}
+                    <img src="{{ asset('assets/images/entree.jpg')}}" alt="">
+                    {% elseif recipe.category.id == 11 %}
+                    <img src="{{ asset('assets/images/dessert.jpg')}}" alt="">
+                    {% elseif recipe.category.id == 12 %}
+                    <img src="{{ asset('assets/images/plat.jpg')}}" alt="">
+                    {% endif %}
+                    <div class="lastRecipe-informations">
+                        <h3>{{recipe.name}}</h3>
+                        <p> par {{recipe.user.firstname}}</p>
+                    </div>
+                        </a>
+                </div>
+                {% endfor %}
+            </div>
         </div>
     </section>
-    <section>
+    {# <section>
         <div class="recipe-best">
             <div>
                 <i class="bi bi-stars"></i>
@@ -47,6 +85,6 @@
 
             </ul>
         </div>
-    </section>
+    </section> #}
 </main>
 {% endblock %}
