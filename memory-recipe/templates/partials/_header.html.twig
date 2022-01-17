@@ -15,13 +15,13 @@
             <a class="navbar-brand" href="{{path('home')}}">Recettes de nos souvenirs</a>
             {# {{dump(app.request.attributes.get('id'))}} #}
 
+            {# Retrtieve the route informations to make the active class dynamic on navbar#}
             {% set currentPath = app.request.attributes.get('_route') %}
             {% set currentPathId = app.request.attributes.get('id')%}
-            {{dump(currentPath, currentPathId)}}
-            {# {% if currentPath != "/connexion" %} #}
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            {# Condition to display the navigation only if a user is connected #}
             {% if is_granted('ROLE_USER') %}
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -52,6 +52,7 @@
                             <li><a class="dropdown-item" href="{{path('app_logout')}}">Se déconnecter</a></li>
                         </ul>
                     </li>
+                    {# Condition to display the admin button only if the user connected has the ROLE_ADMIN #}
                     {% if is_granted('ROLE_ADMIN') %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarAdminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
