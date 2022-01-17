@@ -13,10 +13,10 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{path('home')}}">Recettes de nos souvenirs</a>
-
             {# Retrieve the route informations to make the active class dynamic on navbar#}
             {% set currentPath = app.request.attributes.get('_route') %}
             {% set currentPathId = app.request.attributes.get('id')%}
+            {# {{dump(currentPath)}} #}
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -24,9 +24,6 @@
             {% if is_granted('ROLE_USER') %}
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link {{ (currentPath == 'home') ? 'active' : ''}}" aria-current="page" href="{{path('home')}}">Accueil</a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link {{ (currentPath == 'category_show') and (currentPathId == 9) ? 'active' : ''}}" href="{{path('category_show', {'id': 9 })}}">Apéritif</a>
                     </li>
@@ -64,7 +61,11 @@
                         </ul>
                     </li>
                     {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link {{ (currentPath == 'recipe_create') ? 'active' : ''}}" aria-current="page" href="{{path('recipe_create')}}">Ajouter ma recette</a>
+                    </li>
                 </ul>
+                
                 <form action="{{path('search_index')}}" method="get" class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search" name="search">
                     <button class="btn btn-outline-dark" type="submit">Rechercher</button>
