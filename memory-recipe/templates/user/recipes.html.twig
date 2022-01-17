@@ -30,7 +30,9 @@
             </td>
             <td class="col6">{{recipe.steps}}</td>
             <td class="col7"> 
-            <a href="{{path('recipe_show', {id: recipe.id})}}">Voir</a></td>
+            <a href="{{path('recipe_show', {id: recipe.id})}}">Voir</a>
+            <a href="{{path('profile_recipe_edit', {id: recipe.id})}}">Modifier</a>
+            </td>
         </tr>
     {% endfor %}
     </tbody>

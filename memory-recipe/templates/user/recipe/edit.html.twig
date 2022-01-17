@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+{% block content %}
+<main class="recipe-create">
+    <h1> Modifier la recette : {{recipe.name}}</h1>
+    {{form_start(form)}}
+        {{form_row(form.name)}}
+
+        {# Use symfony proptotype and JS to dynamicaly add several ingredient form #}
+                <ul class="ingredient" 
+                data-index="{{ form.ingredient|length > 0 ? form.ingredient|last.vars.name + 1 : 0 }}" 
+                data-prototype="{{ form_widget(form.ingredient.vars.prototype)|e('html_attr') }}">
+                </ul>
+                <div>
+                <button type="button" class="btn add_item_link" data-collection-holder-class="ingredient"><i class="bi bi-plus-circle-fill"></i> Ajouter un ingredient</button>
+
+        {{form_row(form.steps)}}
+        {{form_row(form.informations)}}
+        {{form_row(form.category)}}
+        {{form_row(form.picture)}}
+
+    <button type="submit" class="btn">Valider</button>
+
+    {{form_end(form)}}
+</main>
+{% endblock %}
