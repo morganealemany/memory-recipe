@@ -17,7 +17,7 @@
         {% endif %}
         </a>
         <div class="recipe-resume">
-            <a href="{{path('recipe', {id: recipe.id})}}"><h1>{{recipe.name}}</h1></a>
+            <a href="{{path('recipe_show', {id: recipe.id})}}"><h1>{{recipe.name}}</h1></a>
             <p>{{recipe.steps}}</p>
         </div>
     </div>    

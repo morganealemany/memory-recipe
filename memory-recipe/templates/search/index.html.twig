@@ -8,7 +8,7 @@
     <ul>
         {% for recipe in results %}
 
-        <li><a href="{{path('recipe', {id: recipe.id})}}">{{recipe.name}}</a> par <em>{{recipe.user.firstname}}</em></li>
+        <li><a href="{{path('recipe_show', {id: recipe.id})}}">{{recipe.name}}</a> par <em>{{recipe.user.firstname}}</em></li>
         
         {% endfor %}
     </ul>

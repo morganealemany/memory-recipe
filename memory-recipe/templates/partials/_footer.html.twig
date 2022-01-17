@@ -5,7 +5,7 @@
         <div class="footer-links">
             {# {% set currentPath = path(app.request.attributes.get('_route')) %}
             {% if currentPath != "/connexion" %} #}
-            <a href="">Ajouter ma recette</a>
+            <a href="{{path('recipe_create')}}">Ajouter ma recette</a>
             {# {% endif %} #}
             <a href="">Contacts</a>
         </div>
